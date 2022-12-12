@@ -10,6 +10,7 @@ namespace Task13_6_1_List
 
             int passes;
 
+            //Проверяем существует ли файл
             if (!File.Exists(path))
             {
                 Console.WriteLine("Файл не найден!");
@@ -22,14 +23,17 @@ namespace Task13_6_1_List
             }
             while (!int.TryParse(Console.ReadLine(), out passes) || passes < 1);
 
+            //Объявляем массив значений времени выполнения записи в List<T>
             var performance = new double[passes];
 
+            //Прогоняем запись в List<T> заданное количество раз
             for(int i = 0; i < passes; i++)
             {
                 performance[i] = WriteToList(path);
                 Console.WriteLine($"Время записи за проход {i}: {performance[i]} мс");
             }
 
+            //Вычисляем и выводим среднее арифметическое значение времени записи в List<T>
             Console.WriteLine($"Среднее значение времени записи: {performance.Sum() / passes} мс");
         }
 
