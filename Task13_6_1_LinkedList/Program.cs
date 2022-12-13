@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Task13_6_1_List
+namespace Task13_6_1_LinkedList
 {
     internal class Program
     {
@@ -9,6 +9,8 @@ namespace Task13_6_1_List
             var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Text1.txt";
 
             int passes;
+
+            double average;
 
             //Проверяем существует ли файл
             if (!File.Exists(path))
@@ -27,14 +29,29 @@ namespace Task13_6_1_List
             var performance = new double[passes];
 
             //Прогоняем запись в List<T> заданное количество раз
-            for(int i = 0; i < passes; i++)
+            for (int i = 0; i < passes; i++)
             {
-                performance[i] = WriteToList(path);
+                performance[i] = WriteToLinkedList(path);
                 Console.WriteLine($"Время записи за проход {i + 1}: {performance[i]} мс");
             }
 
             //Вычисляем и выводим среднее арифметическое значение времени записи в List<T>
-            Console.WriteLine($"Среднее значение времени записи: {performance.Sum() / passes} мс");
+            average = performance.Sum() / passes;
+            Console.WriteLine($"Среднее значение времени записи: {average} мс");
+
+            //Создаем файл и записываем туда результы всех прогонов и среднее значение
+            string filepath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\statistics.txt";
+
+            using (StreamWriter sw = File.CreateText(filepath))
+            {
+                Console.WriteLine("Файл создан. Производится запись данных.");
+                for (int i = 0; i < performance.Length; i++)
+                {
+                    sw.WriteLine($"Время записи за проход {i + 1}: {performance[i]} мс");
+                }
+
+                sw.WriteLine($"Среднее значение времени записи: {average} мс");
+            }
         }
 
         /// <summary>
@@ -42,15 +59,15 @@ namespace Task13_6_1_List
         /// </summary>
         /// <param name="path">Путь к файлу</param>
         /// <returns>Время выполнения записи в список</returns>
-        static double WriteToList(string path)
+        static double WriteToLinkedList(string path)
         {
             var text = File.ReadLines(path);
 
-            List<string> list = new List<string>();
+            LinkedList<string> linkedList = new LinkedList<string>();
 
             var watch = Stopwatch.StartNew();
-            foreach(var line in text)
-                list.Add(line);
+            foreach (var line in text)
+                linkedList.AddFirst(line);
 
             return watch.ElapsedMilliseconds;
         }
