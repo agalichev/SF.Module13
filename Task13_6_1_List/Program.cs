@@ -10,6 +10,8 @@ namespace Task13_6_1_List
 
             int passes;
 
+            double average;
+
             //Проверяем существует ли файл
             if (!File.Exists(path))
             {
@@ -34,7 +36,26 @@ namespace Task13_6_1_List
             }
 
             //Вычисляем и выводим среднее арифметическое значение времени записи в List<T>
-            Console.WriteLine($"Среднее значение времени записи: {performance.Sum() / passes} мс");
+            average = performance.Sum() / passes;
+            Console.WriteLine($"Среднее значение времени записи: {average} мс");
+
+            //Создаем файл и записываем туда результы всех прогонов и среднее значение
+            var dir = Path.GetDirectoryName(Directory.GetCurrentDirectory());
+            var fullname = Directory.GetParent(dir).FullName;
+            var projectRoot = fullname.Substring(0, fullname.Length - 4);
+
+            var filepath = Directory.GetParent(projectRoot)?.FullName + @"\listStat.txt";
+
+            using (StreamWriter sw = File.CreateText(filepath))
+            {
+                Console.WriteLine("Файл создан. Производится запись данных.");
+                for (int i = 0; i < performance.Length; i++)
+                {
+                    sw.WriteLine($"Время записи за проход {i + 1}: {performance[i]} мс");
+                }
+
+                sw.WriteLine($"Среднее значение времени записи: {average} мс");
+            }
         }
 
         /// <summary>
