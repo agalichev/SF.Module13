@@ -40,7 +40,7 @@ namespace Task13_6_1_LinkedList
             Console.WriteLine($"Среднее значение времени записи: {average} мс");
 
             //Создаем файл и записываем туда результы всех прогонов и среднее значение
-            string filepath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\statistics.txt";
+            string filepath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\linkedlistStat.txt";
 
             using (StreamWriter sw = File.CreateText(filepath))
             {
