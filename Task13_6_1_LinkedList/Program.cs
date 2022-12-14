@@ -2,6 +2,9 @@
 
 namespace Task13_6_1_LinkedList
 {
+    /// <summary>
+    /// Основной класс программы
+    /// </summary>
     internal class Program
     {
         static void Main(string[] args)
@@ -59,11 +62,11 @@ namespace Task13_6_1_LinkedList
         }
 
         /// <summary>
-        /// В методе выполняется замер времени записи строк в список List<T>, считанных из файла .txt
+        /// Метод выполняет замер времени записи строк в связанный список
         /// </summary>
         /// <param name="path">Путь к файлу</param>
         /// <returns>Время выполнения записи в список</returns>
-        static double WriteToLinkedList(string path)
+       static double WriteToLinkedList(string path)
         {
             var text = File.ReadLines(path);
 

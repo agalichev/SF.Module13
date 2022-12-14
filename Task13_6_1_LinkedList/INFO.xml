@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Task13_6_1_LinkedList</name>
+    </assembly>
+    <members>
+        <member name="T:Task13_6_1_LinkedList.Program">
+            <summary>
+            Основной класс программы
+            </summary>
+        </member>
+        <member name="M:Task13_6_1_LinkedList.Program.WriteToLinkedList(System.String)">
+            <summary>
+            Метод выполняет замер времени записи строк в список
+            </summary>
+            <param name="path">Путь к файлу</param>
+            <returns>Время выполнения записи в список</returns>
+        </member>
+    </members>
+</doc>

@@ -2,6 +2,9 @@
 
 namespace Task13_6_1_List
 {
+    /// <summary>
+    /// Основной класс программы
+    /// </summary>
     internal class Program
     {
         static void Main(string[] args)
@@ -59,7 +62,7 @@ namespace Task13_6_1_List
         }
 
         /// <summary>
-        /// В методе выполняется замер времени записи строк в список List<T>, считанных из файла .txt
+        /// В методе выполняется замер времени записи строк в список
         /// </summary>
         /// <param name="path">Путь к файлу</param>
         /// <returns>Время выполнения записи в список</returns>

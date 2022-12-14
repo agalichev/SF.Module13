@@ -5,6 +5,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>C:\Users\lexga\OneDrive\Documents\CDEV-14\SF.Module13\Task13_6_1_LinkedList\INFO.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>
