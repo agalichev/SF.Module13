@@ -44,7 +44,11 @@ namespace Task13_6_1_List
 
             //Создаем файл и записываем туда результы всех прогонов и среднее значение
             var dir = Path.GetDirectoryName(Directory.GetCurrentDirectory());
-            var fullname = Directory.GetParent(dir).FullName;
+
+            if (!Directory.Exists(dir))
+                return;
+
+            var fullname = Directory.GetParent(dir)!.FullName;
             var projectRoot = fullname.Substring(0, fullname.Length - 4);
 
             var filepath = Directory.GetParent(projectRoot)?.FullName + @"\listStat.txt";
